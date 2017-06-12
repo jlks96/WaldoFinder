@@ -7,8 +7,10 @@ lower_range = np.array([169, 100, 100], dtype=np.uint8)
 upper_range = np.array([189, 255, 255], dtype=np.uint8)
 
 mask = cv2.inRange(hsv, lower_range, upper_range)
-cv2.imshow('mask',mask)
- 
+res = cv2.bitwise_and(img,img,mask= mask)
+
+cv2.imshow('res',res)
+
 while(1):
   k = cv2.waitKey(0)
   if(k == 27):
