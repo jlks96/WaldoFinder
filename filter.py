@@ -7,7 +7,8 @@ lower_range = np.array([169, 100, 100], dtype=np.uint8)
 upper_range = np.array([189, 255, 255], dtype=np.uint8)
 
 mask = cv2.inRange(hsv, lower_range, upper_range)
- 
+median = cv2.medianBlur(mask,15)
+cv2.imshow('Median Blur', median)
 cv2.imshow('mask',mask)
  
 while(1):
