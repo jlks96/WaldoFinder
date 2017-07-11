@@ -17,7 +17,14 @@ kp2, des2 = orb.detectAndCompute(search, None)
 
 # Hamming is used to determine distance
 
-bruteforce = cv2.BFMatcher(cv2.NORM_HAMMING, crosscheck = True)
+bruteforce = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck = True)
+
+match = bruteforce.match(des1, des2)
 
 
+match = sorted(match, key = lambda x: x.distance)
 
+
+result = cv2.drawMatches(template,kp1, search,kp2, matches[:100], flags =3)
+
+plt.imshow(result), plt.show()
