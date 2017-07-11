@@ -1,3 +1,4 @@
+
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
@@ -8,6 +9,11 @@ import matplotlib.pyplot as plt
 
 template = cv2.imread('waldo.jpg', 0)
 search = cv2.imread('test.jpg', 0)
+test = cv2.cvtColor(template, cv2.COLOR_BGR2HSV)
+plt.imshow(test), plt.show()
+
+
+plt.imshow(search), plt.show()
 
 # Our detector
 orb = cv2.ORB()
@@ -23,8 +29,3 @@ match = bruteforce.match(des1, des2)
 
 
 match = sorted(match, key = lambda x: x.distance)
-
-
-result = cv2.drawMatches(template,kp1, search,kp2, matches[:100], flags =3)
-
-plt.imshow(result), plt.show()
